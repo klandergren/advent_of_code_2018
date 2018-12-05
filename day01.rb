@@ -1,8 +1,4 @@
-
-
-def raw_lines(f)
-  IO.readlines(f, chomp: true)
-end
+require_relative 'toolbox'
 
 def int_lines(f)
   raw_lines(f).map(&:to_i)
