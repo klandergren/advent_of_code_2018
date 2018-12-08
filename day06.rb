@@ -110,10 +110,6 @@ def create_coordinates(f)
   raw_lines(f).map {|x| x.split(', ').map(&:to_i) }
 end
 
-def test(actual, expected)
-  puts (actual == expected ? "pass" : "fail, got #{expected} instead of #{actual}" )
-end
-
 def run_tests
   test_data_file = "data/day06_test_coordinates.txt"
   puts "Part 1: testing..."
