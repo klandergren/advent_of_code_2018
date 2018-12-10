@@ -5,10 +5,10 @@ def raw_lines(f)
 end
 
 def debug(s)
-  puts s if DEBUG
+  puts "debug:   #{s}" if DEBUG
 end
 
 def test(actual, expected)
-  puts (actual == expected ? "pass" : "fail, got #{expected} instead of #{actual}" )
+  print actual == expected ? "." : "fail, got #{expected} instead of #{actual}"
 end
 
