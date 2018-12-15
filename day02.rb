@@ -45,10 +45,10 @@ def off_by_one(file_name)
     (i...lines.size).each do |j|
       b = lines[j]
       if _off_by_one_character?(a,b)
-        debug "similar: \n #{a} \n #{b}"
+        LOGGER.debug { "similar: \n #{a} \n #{b}" }
         c = a.chars - (a.chars - b.chars)
         common_letters = c.join
-        debug "final: #{common_letters}"
+        LOGGER.debug { "final: #{common_letters}" }
       end
     end
   end

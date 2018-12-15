@@ -118,7 +118,7 @@ def run_tests
 
   puts "\ntesting against sample game:"
   raw_lines('data/day09_test_game.txt').each_with_index do |line, i|
-    debug "line: #{line}"
+    LOGGER.debug { "line: #{line}" }
 
     expected = parse_test_game_line(line)
     current_player = expected[0]
@@ -127,10 +127,10 @@ def run_tests
     high_score = 0
     high_score = 32 if 23 <= i
 
-    debug "iter: #{i}"
-    debug "current_player: #{current_player}"
-    debug "current_marble: #{current_marble}"
-    debug "board: #{board.inspect}"
+    LOGGER.debug { "iter: #{i}" }
+    LOGGER.debug { "current_player: #{current_player}" }
+    LOGGER.debug { "current_marble: #{current_marble}" }
+    LOGGER.debug { "board: #{board.inspect}" }
 
     game = GameRunner.play_with(9, i)
 
@@ -142,17 +142,17 @@ def run_tests
 
   puts "\ntesting against sample outcomes:"
   raw_lines('data/day09_test_outcomes.txt').each_with_index do |line, i|
-    debug "line: #{line}"
+    LOGGER.debug { "line: #{line}" }
 
     results = line.split(' ')
     players = results[0].to_i
     iters = results[6].to_i
     high_score = results[-1].to_i
 
-    debug "iter: #{i}"
-    debug "players: #{players}"
-    debug "iters: #{iters}"
-    debug "high_score: #{high_score}"
+    LOGGER.debug { "iter: #{i}" }
+    LOGGER.debug { "players: #{players}" }
+    LOGGER.debug { "iters: #{iters}" }
+    LOGGER.debug { "high_score: #{high_score}" }
 
     game = GameRunner.play_with(players, iters)
     test(high_score, game.high_score)

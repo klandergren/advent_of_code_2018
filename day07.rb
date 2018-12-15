@@ -130,7 +130,7 @@ class Processor
     in_progress = []
     available_nodes = @graph.available_nodes.reverse
     loop do
-      debug "b - time: #{@time} - available nodes: #{available_nodes.map(&:name)} - work queues: #{queues}"
+      LOGGER.debug { "b - time: #{@time} - available nodes: #{available_nodes.map(&:name)} - work queues: #{queues}" }
 
       # try to assign nodes
       queues.each do |q|
@@ -152,7 +152,7 @@ class Processor
       end
 
       all_idle = queues.reject {|q| q[@time] == "." }.empty?
-      debug "e - time: #{@time} - available nodes: #{available_nodes.map(&:name)} - work queues: #{queues} in progress: #{in_progress.map(&:name)}"
+      LOGGER.debug { "e - time: #{@time} - available nodes: #{available_nodes.map(&:name)} - work queues: #{queues} in progress: #{in_progress.map(&:name)}" }
       @time += 1
 
       # is work done?
@@ -161,7 +161,7 @@ class Processor
         pn = q[@time - 1]
         if nn.nil? && !pn.nil? && pn != "."
           prev_in = in_progress
-          debug "#{pn} finished"
+          LOGGER.debug { "#{pn} finished" }
           finished_node = in_progress.select {|n| n.name == pn }.first
           @graph.mark_visited(finished_node)
           available_nodes = (@graph.available_nodes - prev_in).reverse
@@ -169,7 +169,7 @@ class Processor
         end
       end
 
-      debug "in progress: #{in_progress.map(&:name)}"
+      LOGGER.debug { "in progress: #{in_progress.map(&:name)}" }
 
       break if all_idle
     end
@@ -190,6 +190,7 @@ class Processor
 end
 
 def run_tests
+  puts "testing:"
   test_data_file = 'data/day07_test_instructions.txt'
   g = Graph.new(test_data_file)
 
@@ -207,6 +208,7 @@ def run_tests
   g.reset
   p = Processor.new(g, 2, 0)
   test(15, p.process)
+  puts
 end
 
 

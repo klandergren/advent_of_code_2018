@@ -60,7 +60,7 @@ class Tree
   private
 
   def _child_nodes(amount, license)
-    debug "b - license: #{license.inspect}"
+    LOGGER.debug { "b - license: #{license.inspect}" }
     nodes = []
 
     amount.times do
@@ -79,13 +79,14 @@ class Tree
       nodes << n
     end
 
-    debug "e - license: #{license.inspect} - nodes: #{nodes.inspect}"
+    LOGGER.debug { "e - license: #{license.inspect} - nodes: #{nodes.inspect}" }
     nodes
   end
 
 end
 
 def run_tests
+  puts "Testing:"
   t = Tree.new
   t.load_string("0 1 99")
   rn = t.root_node
@@ -165,6 +166,7 @@ def run_tests
     test([16], n.metadata_entries)
   end
 
+  puts
 end
 
 run_tests

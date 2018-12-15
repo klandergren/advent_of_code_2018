@@ -1,11 +1,10 @@
-DEBUG=false
+require 'logger'
+
+LOGGER = Logger.new(STDOUT)
+LOGGER.level = Logger::WARN
 
 def raw_lines(f)
   IO.readlines(f, chomp: true)
-end
-
-def debug(s)
-  puts "debug:   #{s}" if DEBUG
 end
 
 def test(actual, expected)
