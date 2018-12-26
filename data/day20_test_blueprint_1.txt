@@ -1,0 +1,12 @@
+Regex: ^ENWWW(NEEE|SSE(EE|N))$
+Furthest room requires passing 10 doors
+
+#########
+#.|.|.|.#
+#-#######
+#.|.|.|.#
+#-#####-#
+#.#.#X|.#
+#-#-#####
+#.|.|.|.#
+#########

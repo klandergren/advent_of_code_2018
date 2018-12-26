@@ -1,0 +1,8 @@
+Regex: ^WNE$
+Furthest room requires passing 3 doors
+
+#####
+#.|.#
+#-###
+#.|X#
+#####
